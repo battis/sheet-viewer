@@ -59,3 +59,9 @@ button {
 .hide {
     display: none;
 }
+
+#tags .tag.hide {
+    display: inline;
+    color: gray;
+    background: hsl(0, 0%, 95%);
+}

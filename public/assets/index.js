@@ -89,15 +89,19 @@ function generateTagStyles() {
 }
 
 function filterByTag(tagGroup, tag) {
+    if (document.querySelectorAll(`#entries .entry:not(.hide) .${tag}.tag`).length === 0) {
+        resetFilter();
+        console.log('resetting')
+    }
     document.querySelectorAll('.tag').forEach(tag => tag.classList.add('hide'));
-    for (const entry of document.querySelectorAll('#entries > *:not(.hide)')) {
-        if (!entry.dataset[tagGroup] || entry.dataset[tagGroup].indexOf(tag) < 0) {
+    for (const entry of document.querySelectorAll('#entries > .entry:not(.hide)')) {
+        if (entry.querySelector(`.${tag}.tag`) === null) {
             entry.classList.add('hide');
-        } else if (entry.dataset[tagGroup]) {
+        } else {
             entry.querySelectorAll('.tag')
                 .forEach(tag => { // jshint ignore:line
                     document.querySelectorAll(`.${tag.className.split(/\s+/).join('.')}`)
-                        .forEach(other => other.classList.remove('hide'))
+                        .forEach(other => other.classList.remove('hide'));
                 });
         }
     }
@@ -124,18 +128,15 @@ function format(data, params) {
                         .split(',')
                         .map(tag => tag.trim())
                         .filter(tag => tag.length > 0)
-                        .map(tag => `<a class="${camelCase(field)} ${camelCase(tag)} tag" href="javascript:filterByTag('${camelCase(field)}', '${tag}')">${tag}</a>`) // jshint ignore:line
+                        .map(tag => `<a class="${camelCase(field)} ${camelCase(tag)} tag" href="javascript:filterByTag('${camelCase(field)}', '${camelCase(tag)}')">${tag}</a>`) // jshint ignore:line
                         .join('')}</span>`;
-                    dataset[camelCase(field)] = entry[field];
                 }
                 parsed = parsed.replaceAll(`{${field}}`, value.trim());
 
             }
             entries.appendChild(element);
             element.outerHTML = parsed;
-            for (const attr in dataset) {
-                entries.lastElementChild.dataset[attr] = dataset[attr];
-            }
+            entries.lastElementChild.classList.add('entry');
         }
     }
     return entries;
@@ -159,7 +160,7 @@ function toolbar() {
         for (const tag of tagGroups[name].sort()) {
             const element = document.createElement('span');
             container.appendChild(element);
-            element.outerHTML = `<a class="${camelCase(name)} ${camelCase(tag)} tag" href="javascript:filterByTag('${camelCase(name)}', '${tag}')">${tag}</a>`;
+            element.outerHTML = `<a class="${camelCase(name)} ${camelCase(tag)} tag" href="javascript:filterByTag('${camelCase(name)}', '${camelCase(tag)}')">${tag}</a>`;
         }
     }
     return toolbar;
