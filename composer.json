@@ -1,6 +1,6 @@
 {
     "name": "battis/sheet-viewer",
-    "description": "Use Google Sheet as data backend for interactive web page",
+    "description": "Use a Google Sheet as data backend for interactive web page",
     "license": "GPL-3.0",
     "authors": [
         {
