@@ -1,0 +1,61 @@
+body {
+    height: 100vh;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.golden-center {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto auto 1.618fr;
+}
+
+.golden-center div:first-child {
+    grid-row-start: 2;
+    grid-column-start: 2;
+}
+
+button {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    white-space: nowrap;
+}
+
+.tag {
+    padding: 2px;
+    border: solid 0.5px;
+    border-radius: 3px;
+    font-size: x-small;
+    color: darkslategray;
+    border-color: darkslategray;
+    background: lightgray;
+    white-space: nowrap;
+}
+
+.tags {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.15em;
+}
+
+#toolbar {
+    padding: 1em 3em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    box-shadow: lightgray 0 10px 10px;
+}
+
+#tags {
+    display: inline-flex;
+    flex-direction: row;
+    justify-items: left;
+    align-items: start;
+    gap: 1em;
+}
+
+.hide {
+    display: none;
+}

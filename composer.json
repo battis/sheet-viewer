@@ -1,0 +1,16 @@
+{
+    "name": "battis/sheet-viewer",
+    "description": "Use Google Sheet as data backend for interactive web page",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Seth Battis",
+            "email": "seth@battis.net"
+        }
+    ],
+    "require": {
+        "google/apiclient": "2.0",
+        "vlucas/phpdotenv": "^5.3",
+        "ext-json": "*"
+    }
+}

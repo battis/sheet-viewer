@@ -1,0 +1,37 @@
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    grid-column-start: 2;
+}
+
+.form input {
+    font-size: large;
+    padding: 0.5em;
+    border-radius: 0.25em;
+}
+
+.form label {
+    font-size: small;
+}
+
+.control-group {
+    display: grid;
+    grid-template-columns: auto 35em;
+    grid-column-gap: 1em;
+}
+
+.control-group label {
+    text-align: right;
+}
+
+.control-group .help, .control-group button {
+    grid-column-start: 2;
+}
+
+#tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
